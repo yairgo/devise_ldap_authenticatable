@@ -224,7 +224,6 @@ class UserTest < ActiveSupport::TestCase
       end
   
       should "be able to authenticate" do
-        should_be_validated @user, "secret"
         should_be_validated @admin, "admin_secret"
       end
     end
