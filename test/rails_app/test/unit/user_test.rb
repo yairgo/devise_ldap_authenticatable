@@ -208,4 +208,26 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
+  context "group attribute" do
+    setup do
+      default_devise_settings!
+      reset_ldap_server!
+      ::Devise.ldap_config = "#{Rails.root}/config/#{"ssl_" if ENV["LDAP_SSL"]}ldap_without_group_attribute.yml"
+      ::Devise.authentication_keys = [:email]
+      ::Devise.ldap_check_group_membership = true
+    end
+  
+    context "authenticate" do
+      setup do
+        @admin = Factory(:admin)
+        @user = Factory(:user)
+      end
+  
+      should "be able to authenticate" do
+        should_be_validated @user, "secret"
+        should_be_validated @admin, "admin_secret"
+      end
+    end
+  end
+  
 end

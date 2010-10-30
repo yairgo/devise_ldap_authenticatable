@@ -11,6 +11,7 @@ test: &TEST
   host: localhost
   port: 3389
   attribute: cn
+  group_attribute: uniqueMember
   base: ou=people,dc=test,dc=com
   admin_user: cn=admin,dc=test,dc=com
   admin_password: secret

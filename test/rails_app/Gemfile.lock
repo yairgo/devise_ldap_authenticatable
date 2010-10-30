@@ -1,7 +1,7 @@
 PATH
   remote: /Users/dpmcnevin/Rails/devise_ldap_authenticatable
   specs:
-    devise_ldap_authenticatable (0.4.5)
+    devise_ldap_authenticatable (0.4.6)
       devise (= 1.1.2)
       net-ldap (= 0.1.1)
 

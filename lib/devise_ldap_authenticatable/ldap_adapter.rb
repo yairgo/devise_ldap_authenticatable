@@ -40,7 +40,7 @@ module Devise
         @ldap.base = ldap_config["base"]
         @attribute = ldap_config["attribute"]
         #GEG: add group attribute
-        @group_attribute = ldap_config["group_attribute"]
+        @group_attribute = ldap_config["group_attribute"] || "uniqueMember"
         @ldap_auth_username_builder = params[:ldap_auth_username_builder]
         
         @group_base = ldap_config["group_base"]
@@ -96,7 +96,7 @@ module Devise
           if group.is_a?(Array)
             group_attribute, group_name = group
           else
-            group_attribute = "uniqueMember"
+            group_attribute = @group_attribute
             group_name = group
           end
           admin_ldap.search(:base => group_name, :scope => Net::LDAP::SearchScope_BaseObject) do |entry|

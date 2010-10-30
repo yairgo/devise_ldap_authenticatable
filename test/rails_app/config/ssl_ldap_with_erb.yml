@@ -13,6 +13,7 @@ test: &TEST
   host: <%= "localhost" %>
   port: 3389
   attribute: cn
+  group_attribute: uniqueMember
   base: <%= "ou=people,#{@base}" %>
   admin_user: <%= "cn=admin,#{@base}" %>
   admin_password: secret
